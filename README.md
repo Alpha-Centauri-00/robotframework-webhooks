@@ -9,19 +9,13 @@ by adding an App "WebHook" to your preferable channel, which will generate a URL
 > Adding an Incoming Webhook for [Slack](https://api.slack.com/messaging/webhooks)
 
 
-for now you should change the variable "Web_Hook" inside __init__.py to the link that you got by adding the Webhook
-<br/><br/>
-Then you have to install requirements.txt <br/>
-
+- I'd recommend to create a [virtual environment](https://docs.python.org/3/library/venv.html) and clone this repository.
+- Then you have to install requirements.txt
 ```
 pip install -r requirements.txt
 ```
-
-<br/>
-
-
-finally just run the following command:<br/>
-<br/>
+- for now you should change the variable "Web_Hook" inside __init__.py to the link that you got by adding the Webhook. this will change in future see section (.features / .todo) down below.
+- finally just run the following command:<br/>
 ```
 robot --listener webhooks test.robot
 ```
