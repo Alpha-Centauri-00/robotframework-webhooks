@@ -6,11 +6,12 @@ from robot.libraries.BuiltIn import BuiltIn
 from robot.utils import cut_long_message
 import pymsteams
 
+# After you added an Incoming Webhook App in your Channel, you'll get a new URL and 
+# it should replace it in here!
+Web_Hook = "PASTE YOUR URL IN HERE"
 
-Web_Hook = "https://imbusag.webhook.office.com/webhookb2/df88f471-31cc-4874-aed9-ba0449561646@1c3cc83e-09f2-41af-9302-f32930e0f31a/IncomingWebhook/9ff948179ccb4f93a8796c901208285e/b4368d8c-f710-47b4-b541-65e8a65ab730"
 
 bi = BuiltIn()
-
 muting_keywords = [
     "Run Keyword And Ignore Error",
     "Run Keyword And Expect Error",
