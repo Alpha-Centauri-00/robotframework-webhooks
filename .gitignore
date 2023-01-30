@@ -1,0 +1,4 @@
+*.html
+*.xml
+viva/
+__pycache__
