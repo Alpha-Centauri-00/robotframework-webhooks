@@ -3,6 +3,5 @@ charset-normalizer==3.0.1
 idna==3.4
 pymsteams==0.2.2
 requests==2.28.2
-robotframework==6.0.2
-robotframework-stacktrace==0.4.1
+robotframework
 urllib3==1.26.14
