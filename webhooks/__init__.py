@@ -117,13 +117,13 @@ class webhooks:
             myTeamsMessage = pymsteams.connectorcard(Web_Hook)
             myTeamsMessage.title("Robot Framework Results:")
 
-            myTeamsMessage.text(text)
+            myTeamsMessage.text("text")
 
-            
-            # section1 = pymsteams.cardsection()
-            # section1.text(text)
-            # myTeamsMessage.addSection(section1)
-
+            myTeamsMessage.color("#eb0c33")
+            section1 = pymsteams.cardsection()
+            section1.text(text)
+            myTeamsMessage.addSection(section1)
+                        
             myTeamsMessage.send()
             print("\n".join(self._create_stacktrace_text()))
 
@@ -132,22 +132,15 @@ class webhooks:
 
     def _create_stacktrace_text(self) -> str:
         error_text = [f"  "]
-        error_text += ["  Traceback (most recent call last):"]
+        error_text += ["  Traceback (most recent call last):\n"]
         call: StackElement
         for index, call in enumerate(self.StackTrace):
             if call.kind >= Kind.Test:
-                kind = "T:" if call.kind == Kind.Test else ""
-                path = (
-                    f"{call.source}:{call.lineno}"
-                    if call.lineno and call.lineno > 0
-                    else f"{call.source}:0"
-                )
-                error_text += [f'    {"~" * 74}']
-                error_text += [f"    File  {path}"]
+                kind = "  Test case Name:" if call.kind == Kind.Test else ""
+                path = f"{call.source}"
                 error_text += [
-                    f'    {kind}  {call.name}    {"    ".join(call.args or [])}'
+                    f'    {kind}  {call.name}  {"    ".join(call.args or [])}'
                 ]
-                for var, value in call.resolve_args():
-                    error_text += [f"      |  {var} = {cut_long_message(value)}"]
+        error_text += [f"      File  {path}"]
         error_text += [f'{"_" * 78}']
         return error_text
