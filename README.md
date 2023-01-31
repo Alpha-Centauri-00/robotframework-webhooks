@@ -1,10 +1,11 @@
 # robotframework-webhooks
 
-The purpose of this repository is to automatically send the results of executing test cases to MS-Teams / Slack. 
+The purpose of this repository is to automatically send only the failed test cases to MS-Teams / Slack as a listener. 
 by adding an App "WebHook" to your preferable channel, which will generate a URL that you have to use, in order to send the results immediately.
+[For example](https://github.com/Alpha-Centauri-00/robotframework-webhooks/blob/main/ms_teams.png)
 <br/>
 <br/>
-
+## How to
 > Adding an Incoming Webhook for [MS-Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet)<br/>
 > Adding an Incoming Webhook for [Slack](https://api.slack.com/messaging/webhooks)
 
@@ -26,3 +27,7 @@ robot --listener webhooks test.robot
 - [ ] New way to add URL to End user
 - [ ] Add more ideas in here!! maybe [Discord?](https://www.digitalocean.com/community/tutorials/how-to-use-discord-webhooks-to-get-notifications-for-your-website-status-on-ubuntu-18-04) because I guess it's possible.
 - [ ] only test it on Windows. is it necessary for mac or linux? or irrelevant 
+
+
+<br/>
+<br/>
