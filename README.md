@@ -6,7 +6,7 @@ by adding an App "WebHook" to your preferable channel, which will generate a URL
 <br/>
 <br/>
 ## How to
-How to add an APP for MS-Teams or Slack
+How to Create Incoming Webhooks for MS-Teams or Slack
 <br/>
 > Adding an Incoming Webhook for [MS-Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet)<br/>
 > Adding an Incoming Webhook for [Slack](https://api.slack.com/messaging/webhooks)
