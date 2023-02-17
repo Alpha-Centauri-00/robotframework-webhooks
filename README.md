@@ -17,7 +17,7 @@ How to add an APP for MS-Teams or Slack
 ```
 pip install -r requirements.txt
 ```
-- for now you should change the variable "Web_Hook" inside __init__.py to the link that you got by adding the Webhook. this will change in future see section (.features / .todo) down below.
+- Now you should change the variable "url" inside data.json file to the link that you got.
 - finally just run the following command:<br/>
 ```
 robot --listener webhooks test.robot
