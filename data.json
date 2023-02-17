@@ -1,0 +1,30 @@
+{
+    "url1": "Your Channel webhook url",
+
+    "url":"https://imbusag.webhook.office.com/webhookb2/df88f471-31cc-4874-aed9-ba0449561646@1c3cc83e-09f2-41af-9302-f32930e0f31a/IncomingWebhook/9ff948179ccb4f93a8796c901208285e/b4368d8c-f710-47b4-b541-65e8a65ab730",
+
+
+    "Ticket_Title":"Robot Framework Results: ",
+
+    "testname": "test",
+
+    "testsuit": "testsuit",
+
+    "buitd_url":"https://www.google.com/",
+
+    "icon":"https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png?20180323153902",
+
+    "fail":"<span  style='background-color: #ce3e01; color: #fff;border-radius: 3px;font-family: Helvetica, sans-serif;font-weight: bold;padding:2px 5px;'>FAIL</span>",
+
+    "Docu": "Documentation",
+
+    "Docu_info": "This is Documentation infos!!",
+
+    "Button_name": "e.g. github",
+
+    "Button_link":"https://github.com/"
+    
+}
+
+    
+    

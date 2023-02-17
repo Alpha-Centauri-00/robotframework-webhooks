@@ -5,11 +5,11 @@ from robot.errors import VariableError
 from robot.libraries.BuiltIn import BuiltIn
 from robot.utils import cut_long_message
 import pymsteams
+from robot.utils.error import get_error_message
+import json
 
-# After you added an Incoming Webhook App in your Channel, you'll get a new URL and 
-# it should replace it in here!
-Web_Hook = "PASTE YOUR URL IN HERE"
-
+with open("data.json","r") as f:
+    data = json.load(f)
 
 bi = BuiltIn()
 muting_keywords = [
@@ -113,34 +113,52 @@ class webhooks:
         if self.mutings and attrs["kwname"] == self.mutings[-1]:
             self.mutings.pop()
         if attrs["status"] == "FAIL" and self.new_error and not self.mutings:
-            text = "\n".join(self._create_stacktrace_text())
-            myTeamsMessage = pymsteams.connectorcard(Web_Hook)
-            myTeamsMessage.title("Robot Framework Results:")
-
-            myTeamsMessage.text("text")
+            error_text = "\n".join(self._create_stacktrace_text())
+            myTeamsMessage = pymsteams.connectorcard(data["url"])
+            myTeamsMessage.title(data["Ticket_Title"])
+            myTeamsMessage.text(data["fail"])
 
             myTeamsMessage.color("#eb0c33")
             section1 = pymsteams.cardsection()
-            section1.text(text)
+            section1.activityImage(data["icon"])
+            section1.activityText(f'<div  style="border: 1px solid #eb0c33; padding: 12px;font-weight:bold";>{error_text}</div>')
+            _path = self._get_testPath()
+            section1.addFact("Path: ", f"{_path}")
+            section1.addFact(data["Docu"], data["Docu_info"])
+            section1.linkButton(data["Button_name"],data["Button_link"])
             myTeamsMessage.addSection(section1)
                         
             myTeamsMessage.send()
-            print("\n".join(self._create_stacktrace_text()))
-
         self.StackTrace.pop()
         self.new_error = False
 
-    def _create_stacktrace_text(self) -> str:
-        error_text = [f"  "]
-        error_text += ["  Traceback (most recent call last):\n"]
+    
+    def _create_stacktrace_text(self) -> str:      
+        error_text = [f""]
+        error_text += [f"Traceback (most recent call last):"]
         call: StackElement
         for index, call in enumerate(self.StackTrace):
             if call.kind >= Kind.Test:
-                kind = "  Test case Name:" if call.kind == Kind.Test else ""
+                error_text += [f"{call.name} {call.args}"]
+
+        new_list = [string.replace("[]","") for string in error_text]
+
+        orig_error = [string.strip() for string in new_list if string.strip() != '']
+        add_new_line = [string + '\n' for string in orig_error]
+        final_error = [string.replace("'"," ") for string in add_new_line]
+        
+        adding_error_message = "Error is: " + get_error_message()
+
+        final_error.append(adding_error_message)
+        return final_error
+
+
+    def _get_testPath(self) -> str:
+        path_text = "  "
+        call: StackElement
+        for index, call in enumerate(self.StackTrace):
+            if call.kind >= Kind.Test:
+                
                 path = f"{call.source}"
-                error_text += [
-                    f'    {kind}  {call.name}  {"    ".join(call.args or [])}'
-                ]
-        error_text += [f"      File  {path}"]
-        error_text += [f'{"_" * 78}']
-        return error_text
+        path_text += path
+        return path_text

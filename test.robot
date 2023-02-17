@@ -27,3 +27,7 @@ Library    random
     
 05 TC-Testing the robot-fw
     Should be equal    1    2
+
+
+06 TC-Testing the robot-fw
+    Dictionaries Should Be Equal    dict1    dict2
