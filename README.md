@@ -8,8 +8,8 @@ by adding an App "WebHook" to your preferable channel, which will generate a URL
 ## How to
 How to Create Incoming Webhooks for MS-Teams or Slack
 <br/>
-> Adding an Incoming Webhook for [MS-Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet)<br/>
-> Adding an Incoming Webhook for [Slack](https://api.slack.com/messaging/webhooks)
+> Adding Webhook for [MS-Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet)<br/>
+> Adding Webhook for [Slack](https://api.slack.com/messaging/webhooks)
 
 
 - I'd recommend to create a [virtual environment](https://docs.python.org/3/library/venv.html) and clone this repository.
