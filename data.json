@@ -1,9 +1,6 @@
 {
-    "url1": "Your Channel webhook url",
-
-    "url":"https://imbusag.webhook.office.com/webhookb2/df88f471-31cc-4874-aed9-ba0449561646@1c3cc83e-09f2-41af-9302-f32930e0f31a/IncomingWebhook/9ff948179ccb4f93a8796c901208285e/b4368d8c-f710-47b4-b541-65e8a65ab730",
-
-
+    "url": "Your Channel webhook url",
+    
     "Ticket_Title":"Robot Framework Results: ",
 
     "testname": "test",
