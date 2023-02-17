@@ -25,11 +25,10 @@ robot --listener webhooks test.robot
 
 ## .features / .todo
 - [ ] Did not test it with slack. yet
-- [ ] Change Message Details / improve
-- [ ] New way to add URL to End user
+- [x] Change Message Details / improve
+- [x] New way to add URL to End user
 - [ ] Add more ideas in here!! maybe [Discord?](https://www.digitalocean.com/community/tutorials/how-to-use-discord-webhooks-to-get-notifications-for-your-website-status-on-ubuntu-18-04) because I guess it's possible.
-- [ ] only test it on Windows. is it necessary for mac or linux? or irrelevant 
-
+- [ ] only test it on Windows. Is it necessary for mac or linux? or irrelevant
 
 <br/>
 <br/>
