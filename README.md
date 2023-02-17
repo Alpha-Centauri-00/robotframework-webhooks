@@ -1,7 +1,7 @@
 # robotframework-webhooks
 
 The purpose of this repository is to automatically send only the failed test cases to MS-Teams / Slack as a listener. 
-by adding an App "WebHook" to your preferable channel, which will generate a URL that you have to use, in order to send the results immediately.
+by adding an App "WebHook" to your preferable channel, which will generate a URL that you have to use, in order to send the results to your channal immediately. like this
 [For example](https://github.com/Alpha-Centauri-00/robotframework-webhooks/blob/main/ms_teams.png)
 <br/>
 <br/>
