@@ -24,6 +24,7 @@ robot --listener webhooks test.robot
 ```
 
 ## .features / .todo
+- [ ] Improvements idea: Make PyPi package which can installed from command line (by Tatu)
 - [ ] Did not test it with slack. yet
 - [x] Change Message Details / improve
 - [x] New way to add URL to End user
