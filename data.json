@@ -1,13 +1,7 @@
 {
-    "url": "Your Channel webhook url",
+    "url": "Your Channel webhook url (Slack or MS-Teams)",
     
     "Ticket_Title":"Robot Framework Results: ",
-
-    "testname": "test",
-
-    "testsuit": "testsuit",
-
-    "buitd_url":"https://www.google.com/",
 
     "icon":"https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png?20180323153902",
 
@@ -22,6 +16,3 @@
     "Button_link":"https://github.com/"
     
 }
-
-    
-    
