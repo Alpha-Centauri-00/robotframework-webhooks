@@ -1,2 +1,3 @@
 pymsteams==0.2.2
 robotframework
+slack-sdk==3.20.0
