@@ -1,6 +1,6 @@
 from enum import IntEnum
 from os import path
-
+from slack_sdk.webhook import WebhookClient
 from robot.errors import VariableError
 from robot.libraries.BuiltIn import BuiltIn
 from robot.utils import cut_long_message
@@ -114,25 +114,87 @@ class webhooks:
             self.mutings.pop()
         if attrs["status"] == "FAIL" and self.new_error and not self.mutings:
             error_text = "\n".join(self._create_stacktrace_text())
-            myTeamsMessage = pymsteams.connectorcard(data["url"])
-            myTeamsMessage.title(data["Ticket_Title"])
-            myTeamsMessage.text(data["fail"])
-
-            myTeamsMessage.color("#eb0c33")
-            section1 = pymsteams.cardsection()
-            section1.activityImage(data["icon"])
-            section1.activityText(f'<div  style="border: 1px solid #eb0c33; padding: 12px;font-weight:bold";>{error_text}</div>')
-            _path = self._get_testPath()
-            section1.addFact("Path: ", f"{_path}")
-            section1.addFact(data["Docu"], data["Docu_info"])
-            section1.linkButton(data["Button_name"],data["Button_link"])
-            myTeamsMessage.addSection(section1)
-                        
-            myTeamsMessage.send()
+            if "slack" in data["url"]:
+                self._send_slack(error_text=error_text)
+            else:
+                self._send_teams(error_text=error_text)
         self.StackTrace.pop()
         self.new_error = False
 
-    
+
+    def _send_slack(self,error_text):
+        webhook = WebhookClient(data["url"])
+        _path = self._get_testPath()
+        
+        response = webhook.send(
+            text="fallback",
+            blocks=[
+            
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f">{data['Ticket_Title']}"
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "block_id": "section567",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"```{error_text}```"
+                        },
+                    
+                        "accessory": {
+                            "type": "image",
+                            "image_url": f"{data['icon']}",
+                            "alt_text": "Haunted hotel image"
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"Path: {_path}"
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"Documentation: {data['Docu_info']}",
+                            
+                        }
+                    },
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"{'-'*105}",
+                            
+                        }
+                    }
+                ]
+        )
+
+
+    def _send_teams(self,error_text):
+        myTeamsMessage = pymsteams.connectorcard(data["url"])
+        myTeamsMessage.title(data["Ticket_Title"])
+        myTeamsMessage.text(data["fail"])
+
+        myTeamsMessage.color("#eb0c33")
+        section1 = pymsteams.cardsection()
+        section1.activityImage(data["icon"])
+        section1.activityText(f'<div  style="border: 1px solid #eb0c33; padding: 12px;font-weight:bold";>{error_text}</div>')
+        _path = self._get_testPath()
+        section1.addFact("Path: ", f"{_path}")
+        section1.addFact(data["Docu"], data["Docu_info"])
+        section1.linkButton(data["Button_name"],data["Button_link"])
+        myTeamsMessage.addSection(section1)
+        myTeamsMessage.send()
+
+
     def _create_stacktrace_text(self) -> str:      
         error_text = [f""]
         error_text += [f"Traceback (most recent call last):"]
