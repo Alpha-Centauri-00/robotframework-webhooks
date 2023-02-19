@@ -3,16 +3,31 @@ from os import path
 from slack_sdk.webhook import WebhookClient
 from robot.errors import VariableError
 from robot.libraries.BuiltIn import BuiltIn
-from robot.utils import cut_long_message
 import pymsteams
 from robot.utils.error import get_error_message
-import json
 
 
 __version__ = "0.1.1"
 
-with open("data.json","r") as f:
-    data = json.load(f)
+
+data = {
+    "url": "Your Channel webhook url (Slack or MS-Teams)",
+    
+    "title":"Robot Framework Results: ",
+
+    "icon":"https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png?20180323153902",
+
+    "fail":"<span  style='background-color: #ce3e01; color: #fff;border-radius: 3px;font-family: Helvetica, sans-serif;font-weight: bold;padding:2px 5px;'>FAIL</span>",
+
+    "doco": "Documentation",
+
+    "docu_info": "This is Documentation infos!!",
+
+    "button_name": "e.g. github",
+
+    "button_link":"https://github.com/"
+    }
+
 
 bi = BuiltIn()
 muting_keywords = [
@@ -137,7 +152,7 @@ class webhooks:
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": f">{data['Ticket_Title']}"
+                            "text": f">{data['title']}"
                         }
                     },
                     {
@@ -165,7 +180,7 @@ class webhooks:
                         "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": f"Documentation: {data['Docu_info']}",
+                            "text": f"Documentation: {data['docu_info']}",
                             
                         }
                     },
@@ -183,7 +198,7 @@ class webhooks:
 
     def _send_teams(self,error_text):
         myTeamsMessage = pymsteams.connectorcard(data["url"])
-        myTeamsMessage.title(data["Ticket_Title"])
+        myTeamsMessage.title(data["title"])
         myTeamsMessage.text(data["fail"])
 
         myTeamsMessage.color("#eb0c33")
@@ -192,8 +207,8 @@ class webhooks:
         section1.activityText(f'<div  style="border: 1px solid #eb0c33; padding: 12px;font-weight:bold";>{error_text}</div>')
         _path = self._get_testPath()
         section1.addFact("Path: ", f"{_path}")
-        section1.addFact(data["Docu"], data["Docu_info"])
-        section1.linkButton(data["Button_name"],data["Button_link"])
+        section1.addFact(data["doco"], data["docu_info"])
+        section1.linkButton(data["button_name"],data["button_link"])
         myTeamsMessage.addSection(section1)
         myTeamsMessage.send()
 
