@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 with open(
-    join(CURDIR, "webhooks", "__init__.py"), encoding="utf-8"
+    join(CURDIR, "src", "RobotStackTracer", "__init__.py"), encoding="utf-8"
 ) as f:
     VERSION = re.search('\n__version__ = "(.*)"', f.read()).group(1)
 
@@ -18,12 +18,12 @@ setup(
     version=VERSION,
     author="M.Kherki(Alpha-Centauri-00)",
     author_email="alpha_Centauri@posteo.de",
-    description="A listener that sends a Stack Trace instantly to MS-Tams or Slack where the failure appears.",
+    description="A listener that sends a Stack Trace to MS-Teams or Slack where the failure appears.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Alpha-Centauri-00/robotframework-webhooks",
-    package_dir={"": "webhooks"},
-    packages=find_packages("webhooks"),
+    package_dir={"": "src"},
+    packages=find_packages("src"),
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
