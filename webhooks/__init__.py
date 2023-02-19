@@ -8,6 +8,9 @@ import pymsteams
 from robot.utils.error import get_error_message
 import json
 
+
+__version__ = "0.1.1"
+
 with open("data.json","r") as f:
     data = json.load(f)
 
