@@ -2,3 +2,4 @@
 *.xml
 viva/
 __pycache__
+dist/
