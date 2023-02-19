@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 with open(
-    join(CURDIR, "webhooks", "src", "__init__.py"), encoding="utf-8"
+    join(CURDIR, "src", "webhooks", "__init__.py"), encoding="utf-8"
 ) as f:
     VERSION = re.search('\n__version__ = "(.*)"', f.read()).group(1)
 
