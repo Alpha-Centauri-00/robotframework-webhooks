@@ -34,6 +34,6 @@ setup(
         "Topic :: Software Development :: Testing :: Acceptance",
         "Framework :: Robot Framework",
     ],
-    install_requires=["robotframework >= 3.2"],
+    install_requires=["robotframework >= 3.2","pymsteams >= 0.2.2","slack-sdk >= 3.20.0"],
     python_requires=">=3.6",
 )
