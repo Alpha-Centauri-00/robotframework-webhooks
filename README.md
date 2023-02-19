@@ -5,22 +5,30 @@ by adding an App "WebHook" to your preferable channel, which will generate a URL
 [For example](https://github.com/Alpha-Centauri-00/robotframework-webhooks/blob/main/ms_teams.png)
 <br/>
 <br/>
-## How to
+
+# Installation
+
+You can install robotframework-webhooks simply by running:
+
+
+
+```
+pip install robotframework-webhooks
+```
+
+
+## How to:
 How to Create Incoming Webhooks for MS-Teams or Slack
 <br/>
 > Adding Webhook for [MS-Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet)<br/>
 > Adding Webhook for [Slack](https://api.slack.com/messaging/webhooks)
+<br/>
 
 
-- I'd recommend to create a [virtual environment](https://docs.python.org/3/library/venv.html) and clone this repository.
-- Then you have to install requirements.txt
-```
-pip install -r requirements.txt
-```
-- Now you should change the variable "url" inside data.json file to the link that you got.
+- change the variable "url" inside \_\_init\_\_.py file and paste Your URL "`Lib\site-packages\webhooks\__init__.py`"
 - finally just run the following command:<br/>
 ```
-robot --listener webhooks test.robot
+robot --listener webhooks <your test.robot>
 ```
 
 ## .features / .todo
