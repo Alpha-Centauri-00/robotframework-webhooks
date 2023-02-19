@@ -7,7 +7,7 @@ import pymsteams
 from robot.utils.error import get_error_message
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 
 data = {
