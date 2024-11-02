@@ -78,7 +78,7 @@ class webhooks:
                 kind=Kind.Test,
             )
         ]
-
+        self.errormessage = []
     
     def start_keyword(self, name, attrs):
         source = attrs.get("source", self.StackTrace[-1].file if self.StackTrace else self.SuiteTrace[-1])
