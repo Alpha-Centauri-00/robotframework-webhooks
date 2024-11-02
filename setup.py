@@ -18,7 +18,7 @@ setup(
     version=VERSION,
     author="M.Kherki(Alpha-Centauri-00)",
     author_email="alpha_Centauri@posteo.de",
-    description="A listener that sends a Stack Trace to MS-Teams or Slack where the failure appears.",
+    description="A listener that sends a Stack Trace to MS-Teams when a test in Robot framework fails",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Alpha-Centauri-00/robotframework-webhooks",
@@ -32,6 +32,6 @@ setup(
         "Topic :: Software Development :: Testing :: Acceptance",
         "Framework :: Robot Framework",
     ],
-    install_requires=["robotframework >= 3.2","pymsteams >= 0.2.2","slack-sdk >= 3.20.0"],
+    install_requires=["robotframework >= 3.2", "toml", "requests"],
     python_requires=">=3.6",
 )
