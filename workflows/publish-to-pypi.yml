@@ -1,0 +1,35 @@
+name: Publish to PyPI on Version Change
+
+on:
+  push:
+    paths:
+      - "**/__init__.py"       # Adjust if your version is in a different file
+      - "**/setup.py"          # Adjust to include other files where version changes
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"  # Use the version your project requires
+
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine
+
+    - name: Build the package
+      run: python -m build
+
+    - name: Publish to PyPI
+      env:
+        TWINE_USERNAME: "webhook"
+        TWINE_PASSWORD: "${{ secrets.PYPI_API_TOKEN }}"
+      run: |
+        python -m twine upload dist/*
