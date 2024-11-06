@@ -8,7 +8,7 @@ from robot.libraries.BuiltIn import BuiltIn
 from robot.utils.error import get_error_message
 
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 bi = BuiltIn()
 muting_keywords = [
