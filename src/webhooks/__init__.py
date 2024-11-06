@@ -8,7 +8,7 @@ from robot.libraries.BuiltIn import BuiltIn
 from robot.utils.error import get_error_message
 
 
-__version__ = "1.0.4"
+__version__ = "1.0.5"
 
 bi = BuiltIn()
 muting_keywords = [
@@ -113,8 +113,8 @@ class webhooks:
         self.new_error = False
 
     def _send_teams(self):
-        profile_image = self.config['profile'].get('profileImage', "")
-        webhook_url = self.config['urls'].get('webhook_url', "")
+        profile_image = self.config[variables].get('profileImage', "")
+        webhook_url = self.config[variables].get('webhook_url', "")
         if not webhook_url:
             print("No webhook URL configured.")
             return
