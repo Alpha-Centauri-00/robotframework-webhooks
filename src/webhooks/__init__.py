@@ -8,7 +8,7 @@ from robot.libraries.BuiltIn import BuiltIn
 from robot.utils.error import get_error_message
 
 
-__version__ = "1.1.6"
+__version__ = "1.1.7"
 
 bi = BuiltIn()
 muting_keywords = [
@@ -113,7 +113,7 @@ class webhooks:
         self.new_error = False
 
     def _send_teams(self):
-        profile_image = self.config['variables'].get('profileImage', "")
+        
         webhook_url = self.config['variables'].get('webhook_url', "")
         if not webhook_url:
             print("No webhook URL configured.")
@@ -123,7 +123,7 @@ class webhooks:
             "description": "Error Message:\n" + "\n".join(self.errormessage),
             "creator": {
                 "name": "Robot Framework",
-                "profileImage": profile_image
+                "profileImage": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png?20180323153902"
             },
             "Status": "FAIL",
             "viewUrl": "https://adaptivecards.io",
