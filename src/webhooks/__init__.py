@@ -2,6 +2,7 @@ import toml
 import requests
 from os import path
 from enum import IntEnum
+from robot.api import logger
 from datetime import datetime
 from robot.errors import VariableError
 from robot.libraries.BuiltIn import BuiltIn
@@ -138,7 +139,7 @@ class webhooks:
             response = requests.post(webhook_url, json=self._create_card_payload())
             response.raise_for_status()
         except requests.exceptions.RequestException as error:
-            print(f"Error: {error}")
+            logger.warn(f"Error: {error}")
 
     def _create_card_payload(self) -> dict:
         # Initialize the payload structure
