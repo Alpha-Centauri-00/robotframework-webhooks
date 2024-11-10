@@ -120,7 +120,7 @@ class webhooks:
             return
         self.data_json = {
             "title": "Robot Framework Test Failed",
-            "description": f"Error: {self.errormessage}",
+            "description": f"Error: {''.join(self.errormessage)}",
             "creator": {
                 "name": "Robot Framework",
                 "profileImage": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png?20180323153902"
